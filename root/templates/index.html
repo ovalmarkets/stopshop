@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>stopshop</title>
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="/static/assets/images/stopshop.png" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="/static/assets/css/style.min.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body class="light-theme">
+
+  <!--
+    - #HEADER
+  -->
+
+  <header>
+
+    <div class="container">
+
+      <nav class="navbar">
+
+        <a href="#">
+          <img src="/static/assets/images/stopshop.png" alt="stopshop" width="150" height="40" class="logo-light">
+          <img src="/static/assets/images/stopshop.png" alt="stopshop" width="150" height="40" class="logo-dark">
+        </a>
+
+        <div class="btn-group">
+
+          <button class="theme-btn theme-btn-mobile light">
+            <ion-icon name="moon" class="moon"></ion-icon>
+            <ion-icon name="sunny" class="sun"></ion-icon>
+          </button>
+
+          <button class="nav-menu-btn">
+            <ion-icon name="menu-outline"></ion-icon>
+          </button>
+
+        </div>
+
+        <div class="flex-wrapper">
+
+          <ul class="desktop-nav">
+
+            
+            <li>
+              <a href="{{ url_for('login') }}" class="nav-link">login</a>
+            </li>
+
+            
+
+            
+
+
+          </ul>
+
+          <button class="theme-btn theme-btn-desktop light">
+            <ion-icon name="moon" class="moon"></ion-icon>
+            <ion-icon name="sunny" class="sun"></ion-icon>
+          </button>
+
+        </div>
+
+        <div class="mobile-nav">
+
+          <button class="nav-close-btn">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+
+          <div class="wrapper">
+
+            <p class="h3 nav-title">Main Menu</p>
+
+            <ul>
+              <li class="nav-item">
+                <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+              </li>
+
+            </ul>
+
+          </div>
+
+          <div>
+
+            <p class="h3 nav-title">Topics</p>
+
+            <ul>
+              <!--li class="nav-item">
+                <a href="#" class="nav-link">account</a>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">register</a>
+              </li-->
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">login</a>
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+
+
+
+  <main>
+
+    <!--
+      - #HERO SECTION
+    -->
+
+    <div class="hero">
+
+      <div class="container">
+
+        <div class="left">
+
+          <h1 class="h1">
+             <b>M U R A N&nbsp;P A R K </b>
+            <br>
+          </h1>
+
+          <p class="h3">
+            S T O P S H O P
+            
+          </p>
+
+          
+
+        </div>
+
+        <div class="right">
+
+          <div></div>
+          <div class="img-box">
+            <img src="/static/assets/images/stopshop.png" alt="stopshop" class="hero-img">
+            
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+
+
+    <div class="main">
+
+      <div class="container" style=" margin-bottom: 0px;">
+
+        <!--
+          - BLOG SECTION
+        -->
+
+        <div class="blog" >
+
+          <h2 class="h2">editor's</h2>
+
+          <div class="blog-card-group" style="margin-bottom: 0px; height: 600px;overflow: auto;scrollbar-width: thin;scrollbar-track-color: rgb(78, 76, 74);">
+
+            {%if post%}
+            {%for post in post%}
+            <div class="blog-card">
+
+              
+              <div class="blog-content-wrapper">
+
+                <button class="blog-topic text-tiny">{{post.owner}}</button>
+
+                <h3><a href="" class="h3">{{post.title}}</a></h3>
+
+                <p class="blog-text">
+                  {{post.blogdata}}
+                </p>
+
+                
+
+                  
+                
+
+                
+    
+
+              </div>
+             
+                  
+
+            </div>
+            {%endfor%}
+            {%endif%}
+
+
+
+
+          
+
+        </div>
+
+
+
+
+         
+
+          </div>
+
+        </div>
+
+      </div>
+  </main>
+     
+  <div class="main">
+    <div class="container">
+      <div class="newsletter" >  
+        <div class="wrapper">
+
+         
+
+          <form  action="{{ url_for('post') }}" method="post">
+
+           
+            {{form.title(placeholder="title",style="border: none;
+            background: var(--action-primary);
+            display: block;
+            width: 100%;
+            padding: 0.5rem 1rem;
+            font: inherit;
+            color: var(--foreground-secondary);
+            border-radius: 5px;
+            margin-bottom: 1rem;")}}
+            
+            {{form.blogpost(placeholder="blog",style="border: none;
+            background: var(--action-primary);
+            display: block;
+            width: 100%;
+            padding: 0.5rem 1rem;
+            font: inherit;
+            color: var(--foreground-secondary);
+            border-radius: 5px;
+            margin-bottom: 1rem;")}}
+            <br>
+            {{form.post(type="submit",style="
+            min-width: 10rem;
+            border:none;
+            border-radius: 100px
+            margin-inline: auto;
+            margin: auto; 
+            background: var(--accent);
+            color: var(--white);
+            padding: 0.6875rem 1.1875rem", class="btn-primary")}}
+          </form>
+
+    
+   
+
+    </div>
+
+  </main>
+
+
+
+
+
+  <!--
+    - #FOOTER
+  -->
+
+  <footer class="main">
+
+    <a href=""><p class="footer-text">100DOLLARS</p></a>
+  
+  
+    </footer>
+
+  
+
+
+
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="/static/assets/js/script.min.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
