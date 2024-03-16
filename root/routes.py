@@ -1,13 +1,9 @@
 from root import app
 from flask import render_template,redirect,url_for,flash,request,session
-from root.model import users,blogdb
+from root.model import blogdb
 from root import db
 from root.forms import loginform,blogform
-from root import bcrypt
-from flask_login import login_user, logout_user, login_required,current_user
-from root import login_manager
-import mysql.connector
-import MetaTrader5 as mt5
+
 
 
 
